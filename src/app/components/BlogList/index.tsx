@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 interface DataType {
   title: string;
   id: string;
@@ -6,8 +8,9 @@ interface DataType {
 const BlogList = async () => {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
 
-  if (!res.ok) return null;
+  if (!res?.ok) return null;
   const data: DataType[] = await res.json();
+
 
   return (
     <ul>
